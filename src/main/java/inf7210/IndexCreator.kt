@@ -1,5 +1,6 @@
 package inf7210
 
+import org.apache.lucene.analysis.en.EnglishAnalyzer
 import org.apache.lucene.document.*
 import org.apache.lucene.index.*
 import org.apache.lucene.search.IndexSearcher
@@ -15,7 +16,7 @@ fun main(args: Array<String>) {
     val fs = SimpleFSDirectory.open(Paths.get("index","movie"))
 
     fs.use {
-        val indexWriter = IndexWriter(fs, IndexWriterConfig().setOpenMode(IndexWriterConfig.OpenMode.CREATE))
+        val indexWriter = IndexWriter(fs, IndexWriterConfig(EnglishAnalyzer()).setOpenMode(IndexWriterConfig.OpenMode.CREATE))
 
         indexWriter.use {
 
